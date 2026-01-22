@@ -3,14 +3,17 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "dev": "npm run dev -w packages/react-frontend",
+    "dev": "concurrently \"npm run dev -w packages/express-backend\" \"npm run dev -w packages/react-frontend\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
   "description": "",
-    "workspaces": [
-        "packages/*"
-    ]
-    
+  "workspaces": [
+    "packages/*"
+  ],
+  "devDependencies": {
+    "nodemon": "^3.1.11",
+    "concurrently": "^8.2.0"
+  }
 }
