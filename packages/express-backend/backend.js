@@ -8,7 +8,7 @@ const port = 8000;
 app.use(express.json());
 app.use(cors());
 
-// Function to generate a random ID
+// generate a random ID
 function generateId() {
   return Math.random().toString(36).substring(2, 11);
 }
@@ -25,9 +25,10 @@ app.post("/users", (req, res) => {
   const newUser = req.body;
   newUser.id = generateId();
   users.users_list.push(newUser);
-  res.status(201).send(newUser);
+  res.status(201).send(newUser); // When a new user is created, return 201 and new user 
 });
 
+// backend delete by userID
 app.delete("/users/:id", (req, res) => {
   const userId = req.params.id;
   const index = users.users_list.findIndex((user) => user.id === userId);
